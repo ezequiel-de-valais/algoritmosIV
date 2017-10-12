@@ -7,17 +7,17 @@
        file-control.
 
        select alquileresmae
-           assign to disk "..\..\Files\alquileres.dat"
+           assign to disk "Files/alquileres.dat"
            organization is line sequential
            file status is fs-alquileresmae.
 
        select autos
-           assign to disk "..\..\Files\autos.dat"
+           assign to disk "Files/autos.dat"
            organization is line sequential
            file status is fs-autos.
 
        select estadisticas
-           assign to disk "..\..\Files\estadisticas.txt"
+           assign to disk "Files/estadisticas.txt"
            organization is line sequential
            file status is fs-estadisticas.
 
@@ -115,20 +115,31 @@
            03  filler      pic x(6)    value "Hoja: ".
            03  e1hoja      pic 9(3).
 
-       01 encabezado2      pic x(80)   value "                Listado Estadistico de Alquileres por Mes                 ".
+       01 encabezado2.
+          03 filler           pic x(16) value spaces.
+          03 filler           pic x(41) value
+          "Listado Estadistico de Alquileres por Mes".
+          03 filler           pic x(23) value spaces.
        01 encabezado3      pic x(80)   value all spaces.
-       01 encabezado4      pic x(80)   value "Marca                   Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic TOTAL".
+       01 encabezado4.
+          03 filler           pic x(40) value
+          "Marca                   Ene Feb Mar Abr ".
+          03 filler           pic x(40) value
+          "May Jun Jul Ago Sep Oct Nov Dic TOTAL   ".
        01 encabezado5      pic x(80)   value all "-".
 
-       01 matrizmarcaxmes occurs 300 times.
-            03  matrizmarcaxmes-col     occurs  12 times.
-                05  matrizmarcaxmes-elem    pic 9(3) value 000.
 
-       01 vecmarcas occurs 300 times
-               ascending key is vec-marca
-               indexed by ind.
-               03  vec-marca       pic x(20).
-               03  vec-patente     pic x(6).       *> se usa para luego saber la marca de un auto por su patente
+       01 matrizmarcaxmesm.
+           03 matrizmarcaxmes occurs 300 times.
+                05  matrizmarcaxmes-col     occurs  12 times.
+                    07  matrizmarcaxmes-elem    pic 9(3) value 000.
+
+       01 vecmarcasm.
+           03 vecmarcas occurs 300 times
+                   ascending key is vec-marca
+                   indexed by ind.
+                   05  vec-marca       pic x(20).
+                   05  vec-patente     pic x(6).       *> se usa para luego saber la marca de un auto por su patente
 
        01 vectotalmensual.
            03  vectotalmensual-elem    occurs 12 times pic 9(4).
@@ -151,7 +162,8 @@
        abrir-archivos.
            open input alquileresmae.
            if (fs-alquileresmae <> 00)
-               display "Error al abrir archivo de alquileres: " fs-alquileresmae
+               display "Error al abrir archivo de alquileres: "
+               fs-alquileresmae
                accept ws-indice-vecmarcas
                stop run
            end-if.
@@ -228,7 +240,8 @@
                    set ws-indice-marca to ind
            end-search.
 
-           add 1 to matrizmarcaxmes-elem(ws-indice-marca, fecha-mm of fecha-de-hoy).
+           add 1 to matrizmarcaxmes-elem(ws-indice-marca, fecha-mm of
+           fecha-de-hoy).
            add 1 to vectotalmensual-elem(fecha-mm of fecha-de-hoy).
            add 1 to vectotalmarca-elem(ws-indice-marca).
            add 1 to ws-total-general.
