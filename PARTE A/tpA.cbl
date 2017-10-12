@@ -434,9 +434,9 @@
            END-IF.
 
        DETERMINAR-CLAVE-MENOR.
-           IF CLAVE-ALQ  < CLAVE-SOL1
-               MOVE CLAVE-ALQ TO CLAVE-MENOR
-           ELSE
+
+           MOVE CLAVE-ALQ TO CLAVE-MENOR
+           IF CLAVE-SOL1  < CLAVE-MENOR
                MOVE CLAVE-SOL1 TO CLAVE-MENOR
            END-IF.
 
