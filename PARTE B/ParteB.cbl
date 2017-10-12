@@ -198,7 +198,6 @@
                    add 1 to ws-indice-vecmarcas
                when aut-marca = vec-marca(ind)
                    *> display "marca repetida: " marca of vecmarcas(ind)
-           end-search.
            perform leer-autos.
 
 
@@ -258,7 +257,7 @@
                until ws-i > ws-maxautos or vecmarcas(ws-i) = "".
 
        imprimir-col-mes.
-           move vecmarcas(ws-i) to (marca of detalle).
+           move vecmarcas(ws-i) to marca.
            move matrizmarcaxmes-col(ws-i, 1) to det-ene.
            move matrizmarcaxmes-col(ws-i, 2) to det-feb.
            move matrizmarcaxmes-col(ws-i, 3) to det-mar.
@@ -287,7 +286,7 @@
 
            perform chequeo-cambio-pagina.
 
-           move "Totales" to (marca of detalle).
+           move "Totales" to marca.
            move vectotalmensual-elem(1) to det-ene.
            move vectotalmensual-elem(2) to det-feb.
            move vectotalmensual-elem(3) to det-mar.
