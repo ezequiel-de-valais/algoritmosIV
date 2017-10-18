@@ -1,319 +1,320 @@
        IDENTIFICATION DIVISION.
-       program-id. "TP_Parte1_B".
+       PROGRAM-ID. "TP_PARTE1_B".
 
        ENVIRONMENT DIVISION.
-       configuration section.
-       input-output section.
-       file-control.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
 
-       select alquileresmae
-           assign to disk "Files/alquileres.dat"
-           organization is line sequential
-           file status is fs-alquileresmae.
+       SELECT ALQUILERESMAE
+           ASSIGN TO DISK "C:\TPALGOIV\PARTE B\FILES\ALQUILERES.DAT"
+           ORGANIZATION IS LINE SEQUENTIAL
+           FILE STATUS IS FS-ALQUILERESMAE.
 
-       select autos
-           assign to disk "Files/autos.dat"
-           organization is line sequential
-           file status is fs-autos.
+       SELECT AUTOS
+           ASSIGN TO DISK "C:\TPALGOIV\PARTE B\FILES\AUTOS.DAT"
+           ORGANIZATION IS LINE SEQUENTIAL
+           FILE STATUS IS FS-AUTOS.
 
-       select estadisticas
-           assign to disk "Files/estadisticas.txt"
-           organization is line sequential
-           file status is fs-estadisticas.
+       SELECT ESTADISTICAS
+           ASSIGN TO DISK "C:\TPALGOIV\PARTE B\FILES\ESTADISTICAS.TXT"
+           ORGANIZATION IS LINE SEQUENTIAL
+           FILE STATUS IS FS-ESTADISTICAS.
+
 
        DATA DIVISION.
-       file section.
+       FILE SECTION.
 
-       fd alquileresmae
-           label record is standard.
-       01 alquileresmae-rec.
-           03 alq-patente      pic X(6).
-           03 alq-fech.
-               05  fecha-dd    pic 9(2).
-               05  fecha-mm    pic 9(2).
-               05  fecha-aa    pic 9(4).
-           03 filler           pic x(28).
-
-
-       fd autos
-           label record is standard.
-       01 autos-rec.
-           03 aut-patente      pic x(6).
-           03 filler           pic x(30).
-           03 aut-marca        pic x(20).
-           03 filler           pic x(18).
+       FD ALQUILERESMAE
+           LABEL RECORD IS STANDARD.
+       01 ALQUILERESMAE-REC.
+           03 ALQ-PATENTE      PIC X(6).
+           03 ALQ-FECH.
+               05  FECHA-DD    PIC 9(2).
+               05  FECHA-MM    PIC 9(2).
+               05  FECHA-AA    PIC 9(4).
+           03 FILLER           PIC X(28).
 
 
-       fd estadisticas
-           label record is standard.
-       01 estadisticas-rec.
-           03 filler           pic x(80).
-
-       working-storage section.
-
-       01 fs-alquileresmae     pic xx.
-           88 eofalquileres             value "10".
-
-       01 fs-autos             pic xx.
-           88  eofautos                 value "10".
-
-       01 fs-estadisticas      pic xx.
-
-       01 fecha-de-hoy.
-           03  fecha-aaaa      pic 9(4).
-           03  fecha-mm        pic 9(2).
-           03  fecha-dd        pic 9(2).
-
-       01 cant-lineas-por-pag     pic 9(2)    value 10.
-
-       01 ws-hoja                 pic 9(3)    value 001.
-       01 ws-nro-linea            pic 9(2)    value 00.
-       01 ws-indice-vecmarcas                  pic 9(3).
-       01 ws-total-general        pic 9(5)    value 00000.
-       01 ws-indice-marca         pic 9(3).
-       01 ws-i                    pic 9(3).
-       01 ws-maxautos             pic 9(3)     value 300.
+       FD AUTOS
+           LABEL RECORD IS STANDARD.
+       01 AUTOS-REC.
+           03 AUT-PATENTE      PIC X(6).
+           03 FILLER           PIC X(30).
+           03 AUT-MARCA        PIC X(20).
+           03 FILLER           PIC X(18).
 
 
-       01 detalle.
-           03 marca            pic x(20).
-           03 filler           pic x(4) value spaces.
-           03 det-ene          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-feb          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-mar          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-abr          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-may          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-jun          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-jul          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-ago          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-sep          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-oct          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-nov          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-dec          pic 9(3).
-           03 filler           pic x(1) value spaces.
-           03 det-total        pic 9(4).
+       FD ESTADISTICAS
+           LABEL RECORD IS STANDARD.
+       01 ESTADISTICAS-REC.
+           03 FILLER           PIC X(80).
 
-       01 encabezado1.
-           03  filler      pic x(9)    value "Fecha: ".
-           03  fecha-dd    pic 9(2).
-           03  filler      pic x(1)    value "/".
-           03  fecha-mm    pic 9(2).
-           03  filler      pic x(1)   value "/".
-           03  fecha-aaaa  pic 9(4).
-           03  filler      pic x(50)   value spaces.
-           03  filler      pic x(6)    value "Hoja: ".
-           03  e1hoja      pic 9(3).
+       WORKING-STORAGE SECTION.
 
-       01 encabezado2.
-          03 filler           pic x(16) value spaces.
-          03 filler           pic x(41) value
-          "Listado Estadistico de Alquileres por Mes".
-          03 filler           pic x(23) value spaces.
-       01 encabezado3      pic x(80)   value all spaces.
-       01 encabezado4.
-          03 filler           pic x(40) value
-          "Marca                   Ene Feb Mar Abr ".
-          03 filler           pic x(40) value
-          "May Jun Jul Ago Sep Oct Nov Dic TOTAL   ".
-       01 encabezado5      pic x(80)   value all "-".
+       01 FS-ALQUILERESMAE     PIC XX.
+           88 EOFALQUILERES             VALUE "10".
+
+       01 FS-AUTOS             PIC XX.
+           88  EOFAUTOS                 VALUE "10".
+
+       01 FS-ESTADISTICAS      PIC XX.
+
+       01 FECHA-DE-HOY.
+           03  FECHA-AAAA      PIC 9(4).
+           03  FECHA-MM        PIC 9(2).
+           03  FECHA-DD        PIC 9(2).
+
+       01 CANT-LINEAS-POR-PAG     PIC 9(2)    VALUE 10.
+
+       01 WS-HOJA                 PIC 9(3)    VALUE 001.
+       01 WS-NRO-LINEA            PIC 9(2)    VALUE 00.
+       01 WS-INDICE-VECMARCAS                  PIC 9(3).
+       01 WS-TOTAL-GENERAL        PIC 9(5)    VALUE 00000.
+       01 WS-INDICE-MARCA         PIC 9(3).
+       01 WS-I                    PIC 9(3).
+       01 WS-MAXAUTOS             PIC 9(3)     VALUE 300.
 
 
-       01 matrizmarcaxmesm.
-           03 matrizmarcaxmes occurs 300 times.
-                05  matrizmarcaxmes-col     occurs  12 times.
-                    07  matrizmarcaxmes-elem    pic 9(3) value 000.
+       01 DETALLE.
+           03 MARCA            PIC X(20).
+           03 FILLER           PIC X(4) VALUE SPACES.
+           03 DET-ENE          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-FEB          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-MAR          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-ABR          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-MAY          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-JUN          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-JUL          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-AGO          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-SEP          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-OCT          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-NOV          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-DEC          PIC 9(3).
+           03 FILLER           PIC X(1) VALUE SPACES.
+           03 DET-TOTAL        PIC 9(4).
 
-       01 vecmarcasm.
-           03 vecmarcas occurs 300 times
-                   ascending key is vec-marca
-                   indexed by ind.
-                   05  vec-marca       pic x(20).
-                   05  vec-patente     pic x(6).       *> se usa para luego saber la marca de un auto por su patente
+       01 ENCABEZADO1.
+           03  FILLER      PIC X(9)    VALUE "FECHA: ".
+           03  FECHA-DD    PIC 9(2).
+           03  FILLER      PIC X(1)    VALUE "/".
+           03  FECHA-MM    PIC 9(2).
+           03  FILLER      PIC X(1)   VALUE "/".
+           03  FECHA-AAAA  PIC 9(4).
+           03  FILLER      PIC X(50)   VALUE SPACES.
+           03  FILLER      PIC X(6)    VALUE "HOJA: ".
+           03  E1HOJA      PIC 9(3).
 
-       01 vectotalmensual.
-           03  vectotalmensual-elem    occurs 12 times pic 9(4).
-
-
-       01 vectotalmarca.
-           03  vectotalmarca-elem      occurs 300 times pic 9(4).
-
-       procedure division.
-           perform abrir-archivos.
-           perform cargar-marcas.
-           perform imp-encabezado-estadisticas.
-           perform calcular-estadisticas.
-           perform imprimir-matriz-marca-mes.
-           perform imp-tots-mensuales-y-gral.
-           perform cerrar-archivos.
-           accept ws-indice-vecmarcas.
-           stop run.
-
-       abrir-archivos.
-           open input alquileresmae.
-           if (fs-alquileresmae <> 00)
-               display "Error al abrir archivo de alquileres: "
-               fs-alquileresmae
-               accept ws-indice-vecmarcas
-               stop run
-           end-if.
-           open input autos.
-           if (fs-autos <> 00)
-               close alquileresmae
-               display "Error al abrir archivo de autos: " fs-autos
-               accept ws-indice-vecmarcas
-               stop run
-           end-if.
-           open output estadisticas.
-
-       cargar-marcas.
-           perform leer-autos.
-           move 1 to ws-indice-vecmarcas.
-           perform cargar-vector-marcas
-               until eofautos or ws-indice-vecmarcas > ws-maxautos.
-
-
-       leer-autos.
-           read autos record.
-
-       leer-alquileresmae.
-           read alquileresmae record.
-
-       cargar-vector-marcas.
-           set ind to 1.
-           search vecmarcas
-               at end
-                   move aut-marca to vec-marca(ws-indice-vecmarcas)
-                   move aut-patente to vec-patente(ws-indice-vecmarcas)
-                   add 1 to ws-indice-vecmarcas
-               when aut-marca = vec-marca(ind)
-                   *> display "marca repetida: " marca of vecmarcas(ind)
-           perform leer-autos.
+       01 ENCABEZADO2.
+          03 FILLER           PIC X(16) VALUE SPACES.
+          03 FILLER           PIC X(41) VALUE
+          "LISTADO ESTADISTICO DE ALQUILERES POR MES".
+          03 FILLER           PIC X(23) VALUE SPACES.
+       01 ENCABEZADO3      PIC X(80)   VALUE ALL SPACES.
+       01 ENCABEZADO4.
+          03 FILLER           PIC X(40) VALUE
+          "MARCA                   ENE FEB MAR ABR ".
+          03 FILLER           PIC X(40) VALUE
+          "MAY JUN JUL AGO SEP OCT NOV DIC TOTAL   ".
+       01 ENCABEZADO5      PIC X(80)   VALUE ALL "-".
 
 
-       imp-encabezado-estadisticas.
-           move function current-date to fecha-de-hoy.
-           move corresponding fecha-de-hoy to encabezado1.
-           move ws-hoja to e1hoja.
-           display encabezado1.
-           move encabezado1 to estadisticas-rec.
-           write estadisticas-rec.
+       01 MATRIZMARCAXMESM.
+           03 MATRIZMARCAXMES OCCURS 300 TIMES.
+                05  MATRIZMARCAXMES-COL     OCCURS  12 TIMES.
+                    07  MATRIZMARCAXMES-ELEM    PIC 9(3) VALUE 000.
 
-           display encabezado2.
-           move encabezado2 to estadisticas-rec.
-           write estadisticas-rec.
+       01 VECMARCASM.
+           03 VECMARCAS OCCURS 300 TIMES
+                   ASCENDING KEY IS VEC-MARCA
+                   INDEXED BY IND.
+                   05  VEC-MARCA       PIC X(20).
+                   05  VEC-PATENTE     PIC X(6).       *> SE USA PARA LUEGO SABER LA MARCA DE UN AUTO POR SU PATENTE
 
-           display encabezado3.
-           move encabezado3 to estadisticas-rec.
-           write estadisticas-rec.
-
-           display encabezado4.
-           move encabezado4 to estadisticas-rec.
-           write estadisticas-rec.
-
-           display encabezado5.
-           move encabezado5 to estadisticas-rec.
-           write estadisticas-rec.
-
-           add 5 to ws-nro-linea.
-
-       calcular-estadisticas.
-           perform leer-alquileresmae.
-           perform proceso until eofalquileres.
-
-       proceso.
-           set ind to 1.
-           move corresponding alq-fech to fecha-de-hoy.
-           search vecmarcas
-               when alq-patente = vec-patente(ind)
-                   set ws-indice-marca to ind
-           end-search.
-
-           add 1 to matrizmarcaxmes-elem(ws-indice-marca, fecha-mm of
-           fecha-de-hoy).
-           add 1 to vectotalmensual-elem(fecha-mm of fecha-de-hoy).
-           add 1 to vectotalmarca-elem(ws-indice-marca).
-           add 1 to ws-total-general.
-
-           perform leer-alquileresmae.
-
-       imprimir-matriz-marca-mes.
-           move 1 to ws-i.
-           perform imprimir-fila-marca
-               until ws-i > ws-maxautos or vecmarcas(ws-i) = "".
-
-       imprimir-fila-marca.
-           perform imprimir-col-mes
-               until ws-i > ws-maxautos or vecmarcas(ws-i) = "".
-
-       imprimir-col-mes.
-           move vecmarcas(ws-i) to marca.
-           move matrizmarcaxmes-col(ws-i, 1) to det-ene.
-           move matrizmarcaxmes-col(ws-i, 2) to det-feb.
-           move matrizmarcaxmes-col(ws-i, 3) to det-mar.
-           move matrizmarcaxmes-col(ws-i, 4) to det-abr.
-           move matrizmarcaxmes-col(ws-i, 5) to det-may.
-           move matrizmarcaxmes-col(ws-i, 6) to det-jun.
-           move matrizmarcaxmes-col(ws-i, 7) to det-jul.
-           move matrizmarcaxmes-col(ws-i, 8) to det-ago.
-           move matrizmarcaxmes-col(ws-i, 9) to det-sep.
-           move matrizmarcaxmes-col(ws-i, 10) to det-oct.
-           move matrizmarcaxmes-col(ws-i, 11) to det-nov.
-           move matrizmarcaxmes-col(ws-i, 12) to det-dec.
-           move vectotalmarca-elem(ws-i) to det-total.
-           display detalle.
-           move detalle to estadisticas-rec.
-           write estadisticas-rec.
-           add 1 to ws-i.
-
-           perform chequeo-cambio-pagina.
+       01 VECTOTALMENSUAL.
+           03  VECTOTALMENSUAL-ELEM    OCCURS 12 TIMES PIC 9(4).
 
 
-       imp-tots-mensuales-y-gral.
-           display encabezado3.
-           move encabezado3 to estadisticas-rec.
-           write estadisticas-rec.
+       01 VECTOTALMARCA.
+           03  VECTOTALMARCA-ELEM      OCCURS 300 TIMES PIC 9(4).
 
-           perform chequeo-cambio-pagina.
+       PROCEDURE DIVISION.
+           PERFORM ABRIR-ARCHIVOS.
+           PERFORM CARGAR-MARCAS.
+           PERFORM IMP-ENCABEZADO-ESTADISTICAS.
+           PERFORM CALCULAR-ESTADISTICAS.
+           PERFORM IMPRIMIR-MATRIZ-MARCA-MES.
+           PERFORM IMP-TOTS-MENSUALES-Y-GRAL.
+           PERFORM CERRAR-ARCHIVOS.
+           ACCEPT WS-INDICE-VECMARCAS.
+           STOP RUN.
 
-           move "Totales" to marca.
-           move vectotalmensual-elem(1) to det-ene.
-           move vectotalmensual-elem(2) to det-feb.
-           move vectotalmensual-elem(3) to det-mar.
-           move vectotalmensual-elem(4) to det-abr.
-           move vectotalmensual-elem(5) to det-may.
-           move vectotalmensual-elem(6) to det-jun.
-           move vectotalmensual-elem(7) to det-jul.
-           move vectotalmensual-elem(8) to det-ago.
-           move vectotalmensual-elem(9) to det-sep.
-           move vectotalmensual-elem(10) to det-oct.
-           move vectotalmensual-elem(11) to det-nov.
-           move vectotalmensual-elem(12) to det-dec.
-           move ws-total-general to det-total.
-           display detalle.
-           move detalle to estadisticas-rec.
-           write estadisticas-rec.
+       ABRIR-ARCHIVOS.
+           OPEN INPUT ALQUILERESMAE.
+           IF (FS-ALQUILERESMAE <> 00)
+               DISPLAY "ERROR AL ABRIR ARCHIVO DE ALQUILERES: "
+               FS-ALQUILERESMAE
+               ACCEPT WS-INDICE-VECMARCAS
+               STOP RUN
+           END-IF.
+           OPEN INPUT AUTOS.
+           IF (FS-AUTOS <> 00)
+               CLOSE ALQUILERESMAE
+               DISPLAY "ERROR AL ABRIR ARCHIVO DE AUTOS: " FS-AUTOS
+               ACCEPT WS-INDICE-VECMARCAS
+               STOP RUN
+           END-IF.
+           OPEN OUTPUT ESTADISTICAS.
 
-       chequeo-cambio-pagina.
-           add 1 to ws-nro-linea.
+       CARGAR-MARCAS.
+           PERFORM LEER-AUTOS.
+           MOVE 1 TO WS-INDICE-VECMARCAS.
+           PERFORM CARGAR-VECTOR-MARCAS
+               UNTIL EOFAUTOS OR WS-INDICE-VECMARCAS > WS-MAXAUTOS.
 
-           if (ws-nro-linea >= cant-lineas-por-pag)
-               move 0 to ws-nro-linea
-               add 1 to ws-hoja
-               perform imp-encabezado-estadisticas
-           end-if.
 
-       cerrar-archivos.
-           close alquileresmae
-                 autos
-                 estadisticas.
+       LEER-AUTOS.
+           READ AUTOS RECORD.
+
+       LEER-ALQUILERESMAE.
+           READ ALQUILERESMAE RECORD.
+
+       CARGAR-VECTOR-MARCAS.
+           SET IND TO 1.
+           SEARCH VECMARCAS
+               AT END
+                   MOVE AUT-MARCA TO VEC-MARCA(WS-INDICE-VECMARCAS)
+                   MOVE AUT-PATENTE TO VEC-PATENTE(WS-INDICE-VECMARCAS)
+                   ADD 1 TO WS-INDICE-VECMARCAS
+               WHEN AUT-MARCA = VEC-MARCA(IND)
+                   *> DISPLAY "MARCA REPETIDA: " MARCA OF VECMARCAS(IND)
+           PERFORM LEER-AUTOS.
+
+
+       IMP-ENCABEZADO-ESTADISTICAS.
+           MOVE FUNCTION CURRENT-DATE TO FECHA-DE-HOY.
+           MOVE CORRESPONDING FECHA-DE-HOY TO ENCABEZADO1.
+           MOVE WS-HOJA TO E1HOJA.
+           DISPLAY ENCABEZADO1.
+           MOVE ENCABEZADO1 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           DISPLAY ENCABEZADO2.
+           MOVE ENCABEZADO2 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           DISPLAY ENCABEZADO3.
+           MOVE ENCABEZADO3 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           DISPLAY ENCABEZADO4.
+           MOVE ENCABEZADO4 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           DISPLAY ENCABEZADO5.
+           MOVE ENCABEZADO5 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           ADD 5 TO WS-NRO-LINEA.
+
+       CALCULAR-ESTADISTICAS.
+           PERFORM LEER-ALQUILERESMAE.
+           PERFORM PROCESO UNTIL EOFALQUILERES.
+
+       PROCESO.
+           SET IND TO 1.
+           MOVE CORRESPONDING ALQ-FECH TO FECHA-DE-HOY.
+           SEARCH VECMARCAS
+               WHEN ALQ-PATENTE = VEC-PATENTE(IND)
+                   SET WS-INDICE-MARCA TO IND
+           END-SEARCH.
+
+           ADD 1 TO MATRIZMARCAXMES-ELEM(WS-INDICE-MARCA, FECHA-MM OF
+           FECHA-DE-HOY).
+           ADD 1 TO VECTOTALMENSUAL-ELEM(FECHA-MM OF FECHA-DE-HOY).
+           ADD 1 TO VECTOTALMARCA-ELEM(WS-INDICE-MARCA).
+           ADD 1 TO WS-TOTAL-GENERAL.
+
+           PERFORM LEER-ALQUILERESMAE.
+
+       IMPRIMIR-MATRIZ-MARCA-MES.
+           MOVE 1 TO WS-I.
+           PERFORM IMPRIMIR-FILA-MARCA
+               UNTIL WS-I > WS-MAXAUTOS OR VECMARCAS(WS-I) = "".
+
+       IMPRIMIR-FILA-MARCA.
+           PERFORM IMPRIMIR-COL-MES
+               UNTIL WS-I > WS-MAXAUTOS OR VECMARCAS(WS-I) = "".
+
+       IMPRIMIR-COL-MES.
+           MOVE VECMARCAS(WS-I) TO MARCA.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 1) TO DET-ENE.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 2) TO DET-FEB.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 3) TO DET-MAR.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 4) TO DET-ABR.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 5) TO DET-MAY.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 6) TO DET-JUN.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 7) TO DET-JUL.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 8) TO DET-AGO.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 9) TO DET-SEP.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 10) TO DET-OCT.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 11) TO DET-NOV.
+           MOVE MATRIZMARCAXMES-COL(WS-I, 12) TO DET-DEC.
+           MOVE VECTOTALMARCA-ELEM(WS-I) TO DET-TOTAL.
+           DISPLAY DETALLE.
+           MOVE DETALLE TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+           ADD 1 TO WS-I.
+
+           PERFORM CHEQUEO-CAMBIO-PAGINA.
+
+
+       IMP-TOTS-MENSUALES-Y-GRAL.
+           DISPLAY ENCABEZADO3.
+           MOVE ENCABEZADO3 TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+           PERFORM CHEQUEO-CAMBIO-PAGINA.
+
+           MOVE "TOTALES" TO MARCA.
+           MOVE VECTOTALMENSUAL-ELEM(1) TO DET-ENE.
+           MOVE VECTOTALMENSUAL-ELEM(2) TO DET-FEB.
+           MOVE VECTOTALMENSUAL-ELEM(3) TO DET-MAR.
+           MOVE VECTOTALMENSUAL-ELEM(4) TO DET-ABR.
+           MOVE VECTOTALMENSUAL-ELEM(5) TO DET-MAY.
+           MOVE VECTOTALMENSUAL-ELEM(6) TO DET-JUN.
+           MOVE VECTOTALMENSUAL-ELEM(7) TO DET-JUL.
+           MOVE VECTOTALMENSUAL-ELEM(8) TO DET-AGO.
+           MOVE VECTOTALMENSUAL-ELEM(9) TO DET-SEP.
+           MOVE VECTOTALMENSUAL-ELEM(10) TO DET-OCT.
+           MOVE VECTOTALMENSUAL-ELEM(11) TO DET-NOV.
+           MOVE VECTOTALMENSUAL-ELEM(12) TO DET-DEC.
+           MOVE WS-TOTAL-GENERAL TO DET-TOTAL.
+           DISPLAY DETALLE.
+           MOVE DETALLE TO ESTADISTICAS-REC.
+           WRITE ESTADISTICAS-REC.
+
+       CHEQUEO-CAMBIO-PAGINA.
+           ADD 1 TO WS-NRO-LINEA.
+
+           IF (WS-NRO-LINEA >= CANT-LINEAS-POR-PAG)
+               MOVE 0 TO WS-NRO-LINEA
+               ADD 1 TO WS-HOJA
+               PERFORM IMP-ENCABEZADO-ESTADISTICAS
+           END-IF.
+
+       CERRAR-ARCHIVOS.
+           CLOSE ALQUILERESMAE
+                 AUTOS
+                 ESTADISTICAS.
