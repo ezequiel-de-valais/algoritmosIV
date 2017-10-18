@@ -1,0 +1,16 @@
+Fecha:   12/10/2017                                                  Hoja: 001
+                Listado Estadistico de Alquileres por Mes
+
+Marca                   Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic TOTAL
+--------------------------------------------------------------------------------
+HONDA                   000 000 000 000 000 001 000 000 000 000 000 000 0001
+RENAULT                 000 000 000 000 000 001 000 000 000 000 000 000 0001
+VOLKSWAGEN              000 000 000 000 000 000 000 000 000 000 000 000 0000
+AUDI                    000 000 000 000 000 008 001 000 000 000 000 000 0009
+
+Fecha:   12/10/2017                                                  Hoja: 002
+                Listado Estadistico de Alquileres por Mes
+
+Marca                   Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic TOTAL
+--------------------------------------------------------------------------------
+Totales                 000 000 000 000 000 010 001 000 000 000 000 000 0011

@@ -7,19 +7,20 @@
        file-control.
 
        select alquileresmae
-           assign to disk "Files/alquileres.dat"
+           assign to disk "C:\TPALGOIV\PARTE B\Files\alquileres.dat"
            organization is line sequential
            file status is fs-alquileresmae.
 
        select autos
-           assign to disk "Files/autos.dat"
+           assign to disk "C:\TPALGOIV\PARTE B\Files\autos.dat"
            organization is line sequential
            file status is fs-autos.
 
        select estadisticas
-           assign to disk "Files/estadisticas.txt"
+           assign to disk "C:\TPALGOIV\PARTE B\Files\estadisticas.txt"
            organization is line sequential
            file status is fs-estadisticas.
+
 
        DATA DIVISION.
        file section.
