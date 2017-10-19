@@ -65,7 +65,7 @@
            03  FECHA-MM        PIC 9(2).
            03  FECHA-DD        PIC 9(2).
 
-       01 CANT-LINEAS-POR-PAG     PIC 9(2)    VALUE 10.
+       01 CANT-LINEAS-POR-PAG     PIC 9(2)    VALUE 60.
 
        01 WS-HOJA                 PIC 9(3)    VALUE 001.
        01 WS-NRO-LINEA            PIC 9(2)    VALUE 00.
