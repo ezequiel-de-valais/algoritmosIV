@@ -1,4 +1,4 @@
-Fecha:   18/10/2017                                                  Hoja: 001
+Fecha:   29/10/2017                                                  Hoja: 001
                           Listado de autos alquilados aprobados
 
 Patente: AAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -58,7 +58,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 002
+Fecha:   29/10/2017                                                  Hoja: 002
                           Listado de autos alquilados aprobados
 
 Patente: BAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -118,7 +118,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 003
+Fecha:   29/10/2017                                                  Hoja: 003
                           Listado de autos alquilados aprobados
 
 Patente: CAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -178,7 +178,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 004
+Fecha:   29/10/2017                                                  Hoja: 004
                           Listado de autos alquilados aprobados
 
 Patente: HRK 903           Descripcion: LADESCRIPCIONDELAUTO
@@ -238,7 +238,7 @@ Totales por patente                Cantidad de días0002      Importe   02011,53
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 005
+Fecha:   29/10/2017                                                  Hoja: 005
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
@@ -296,7 +296,7 @@ Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
       15/07/2017          D        12714568                   2
       16/07/2017          D        12714568                   2
       17/07/2017          D        12714568                   2
-Fecha:   18/10/2017                                                  Hoja: 006
+Fecha:   29/10/2017                                                  Hoja: 006
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
