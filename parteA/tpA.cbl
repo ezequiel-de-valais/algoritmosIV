@@ -49,6 +49,7 @@
            FILE STATUS IS LIST-APROBADOS-STATUS.
 
        DATA DIVISION.
+
        FILE SECTION.
 
         FD    ALQUILERES
@@ -164,7 +165,7 @@
            03  FECHA-MM        pic 9(2).
            03  FECHA-DD        pic 9(2).
 
-       01 LISTADO-LINEA-1.
+       01 LISTADO-ENCABEZADO-LINEA-1.
            03  FILLER      PIC X(9)    VALUE "Fecha: ".
            03  FECHA-DD    PIC 9(2).
            03  FILLER      PIC X       VALUE "/".
@@ -243,7 +244,7 @@
            03  FILLER PIC X(35) VALUE
            "Totales por patente                ".
            03  FILLER    PIC X(17) VALUE
-          "Cantidad de días ".
+          "Cantidad de dias ".
            03  E7-TOTDIASPATENTE      PIC 9999 .
            03  FILLER PIC X(16) VALUE
            "      Importe   ".
@@ -275,13 +276,13 @@
            PERFORM LEER-AUTOS.
            PERFORM GUARDAR-AUTOS-EN-VECAUTOS.
            PERFORM IMPRIMIR-LISTADO-LINEA--1-Y-2.
-           PERFORM PROCESOALQ UNTIL ALQUILERES-STATUS IS EQUAL TO 10 AND
+           PERFORM PROCESOALQ UNTIL 
+               ALQUILERES-STATUS IS EQUAL TO 10 AND
                SOLICITUDES1-STATUS IS EQUAL TO 10 AND
                SOLICITUDES2-STATUS IS EQUAL TO 10 AND
                SOLICITUDES3-STATUS IS EQUAL TO 10.
            PERFORM IMPRIMIR-TOT-GRAL.
            PERFORM CERRAR-ARCHIVOS.
-           ACCEPT WS-EXIT.
            STOP RUN.
 
        INICIALIZAR.
@@ -402,11 +403,11 @@
 
        IMPRIMIR-LISTADO-LINEA--1-Y-2.
            MOVE FUNCTION CURRENT-DATE TO FECHA-DE-HOY.
-           MOVE CORRESPONDING FECHA-DE-HOY TO LISTADO-LINEA-1.
+           MOVE CORRESPONDING FECHA-DE-HOY TO LISTADO-ENCABEZADO-LINEA-1.
            MOVE NUMERO-HOJA TO E1-HOJA.
-           DISPLAY LISTADO-LINEA-1.
+           DISPLAY LISTADO-ENCABEZADO-LINEA-1.
            DISPLAY LISTADO-LINEA-2.
-           MOVE LISTADO-LINEA-1 TO REG-LIST-APROBADOS.
+           MOVE LISTADO-ENCABEZADO-LINEA-1 TO REG-LIST-APROBADOS.
            WRITE REG-LIST-APROBADOS.
            MOVE LISTADO-LINEA-2 TO REG-LIST-APROBADOS.
            WRITE REG-LIST-APROBADOS.
