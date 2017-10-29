@@ -52,8 +52,7 @@
 
        FILE SECTION.
 
-        FD    ALQUILERES
-            LABEL RECORD STANDARD.
+        FD    ALQUILERES LABEL RECORD STANDARD.
         01    REG-ALQUILERES.
                03 CLAVE-ALQ.
                    05  ALQ-PATENTE   PIC X(6).
@@ -65,8 +64,7 @@
                03  ALQ-NRODOC    PIC X(20).
                03  ALQ-IMPORTE   PIC 9(4)V99.
 
-        FD    NUEVOALQUILERES
-            LABEL RECORD STANDARD.
+        FD    NUEVOALQUILERES LABEL RECORD STANDARD.
         01    REG-NUEVOALQUILERES.
                03 CLAVE-NVALQ.
                    05  NUEVOALQ-PATENTE   PIC X(6).
@@ -75,7 +73,7 @@
                03  NUEVOALQ-NRODOC    PIC X(20).
                03  NUEVOALQ-IMPORTE   PIC 9(4)V99.
 
-        FD    SOLICITUDES1  LABEL RECORD STANDARD.
+        FD    SOLICITUDES1 LABEL RECORD STANDARD.
         01    REG-SOLICITUDES1.
                03 CLAVE-SOL1.
                    05  SOL1-PATENTE   PIC X(6).
@@ -83,7 +81,7 @@
                03  SOL1-TIPODOC   PIC X.
                03  SOL1-NRODOC    PIC X(20).
 
-        FD    SOLICITUDES2  LABEL RECORD STANDARD.
+        FD    SOLICITUDES2 LABEL RECORD STANDARD.
         01    REG-SOLICITUDES2.
                03 CLAVE-SOL2.
                    05  SOL2-PATENTE   PIC X(6).
@@ -91,7 +89,7 @@
                03  SOL2-TIPODOC   PIC X.
                03  SOL2-NRODOC    PIC X(20).
 
-        FD    SOLICITUDES3  LABEL RECORD STANDARD.
+        FD    SOLICITUDES3 LABEL RECORD STANDARD.
         01    REG-SOLICITUDES3.
                03 CLAVE-SOL3.
                    05  SOL3-PATENTE   PIC X(6).
@@ -99,8 +97,7 @@
                03  SOL3-TIPODOC   PIC X.
                03  SOL3-NRODOC    PIC X(20).
 
-        FD    AUTOS
-            LABEL RECORD STANDARD.
+        FD    AUTOS LABEL RECORD STANDARD.
         01    REG-AUTOS.
                03  AUT-PATENTE   PIC X(6).
                03  AUT-DESC      PIC X(30).
@@ -109,8 +106,7 @@
                03  AUT-TAMANO    PIC X.
                03  AUT-IMPORTE   PIC 9(4)V99.
 
-        FD    RECHAZADOS
-            LABEL RECORD STANDARD.
+        FD    RECHAZADOS LABEL RECORD STANDARD.
         01    REG-RECHAZADOS.
                03 CLAVE-RECH.
                    05  RECH-PATENTE       PIC X(6).
@@ -120,8 +116,7 @@
                03  RECH-MOTIVO        PIC 9.
                03  RECH-AGENCIA       PIC 9.
 
-        FD    LIST-APROBADOS
-            LABEL RECORD OMITTED.
+        FD    LIST-APROBADOS LABEL RECORD OMITTED.
         01    REG-LIST-APROBADOS PIC X(80).
 
        WORKING-STORAGE SECTION.
@@ -288,7 +283,8 @@
        INICIALIZAR.
            OPEN INPUT ALQUILERES.
            IF ALQUILERES-STATUS IS NOT EQUAL TO 00
-               DISPLAY "ERROR ABRIR ALQUILERES FS: " ALQUILERES-STATUS
+               DISPLAY "ERROR ABRIR ALQUILERES FS: " 
+               ALQUILERES-STATUS
                STOP RUN
            END-IF.
 
@@ -508,7 +504,7 @@
 
        PROCESO-SOLICITUDES.
            PERFORM DETERMINAR-CLAVE-MENOR.
-           PERFORM INICIALIZAR-FLAGS.
+           MOVE 'NO' TO  FLAG-CLAVE-APROB.
            PERFORM POS-ALQUILERES.
            PERFORM POS-SOLICITUDES1.
            PERFORM POS-SOLICITUDES3.
@@ -528,9 +524,6 @@
            IF CLAVE-SOL3  < CLAVE-MENOR
                MOVE CLAVE-SOL3 TO CLAVE-MENOR
            END-IF.
-
-       INICIALIZAR-FLAGS.
-          MOVE 'NO' TO  FLAG-CLAVE-APROB.
 
        POS-ALQUILERES.
            MOVE 0 TO AGENCIA.
@@ -572,7 +565,6 @@
            END-IF.
            PERFORM LEER-ALQ.
 
-
        PROCESAR-SOLICITUDES1.
            IF FLAG-CLAVE-APROB IS EQUAL TO 'SI'
                 MOVE 1 TO RECH-MOTIVO
@@ -590,7 +582,7 @@
                 ADD AUT-IMPORTE TO TOTPATENTE
                 ADD 1 TO TOTDIASPATENTE
                 PERFORM IMPRIMO-APROBADO
-           ELSE IF PATENTE-VALIDA IS EQUAL TO 'NO'
+           ELSE 
                 MOVE 2 TO RECH-MOTIVO
                 MOVE AGENCIA TO RECH-AGENCIA
                 MOVE SOL1-PATENTE TO RECH-PATENTE
@@ -618,7 +610,7 @@
                 ADD AUT-IMPORTE TO TOTPATENTE
                 ADD 1 TO TOTDIASPATENTE
                 PERFORM IMPRIMO-APROBADO
-           ELSE IF PATENTE-VALIDA IS EQUAL TO 'NO'
+           ELSE 
                 MOVE 2 TO RECH-MOTIVO
                 MOVE AGENCIA TO RECH-AGENCIA
                 MOVE SOL3-PATENTE TO RECH-PATENTE
@@ -646,7 +638,7 @@
                 ADD AUT-IMPORTE TO TOTPATENTE
                 ADD 1 TO TOTDIASPATENTE
                 PERFORM IMPRIMO-APROBADO
-           ELSE IF PATENTE-VALIDA IS EQUAL TO 'NO'
+           ELSE 
                 MOVE 2 TO RECH-MOTIVO
                 MOVE AGENCIA TO RECH-AGENCIA
                 MOVE SOL2-PATENTE TO RECH-PATENTE
@@ -675,8 +667,6 @@
            DISPLAY LISTADO-APROBADO.
            MOVE LISTADO-APROBADO TO REG-LIST-APROBADOS.
            WRITE REG-LIST-APROBADOS.
-
-
 
        IMPRIMIR-SALTO-DE-LINEA.
            ADD 1 TO CANT-LINEAS.
