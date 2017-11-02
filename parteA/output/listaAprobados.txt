@@ -1,4 +1,4 @@
-Fecha:   18/10/2017                                                  Hoja: 001
+Fecha:   29/10/2017                                                  Hoja: 001
                           Listado de autos alquilados aprobados
 
 Patente: AAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -9,7 +9,7 @@ Patente: AAA 088           Descripcion: LADESCRIPCIONDELAUTO
        Fecha         Tipo Doc         Nro. Documento       Agencia
 --------------------------------------------------------------------------------
       19/06/1991          D        36170503                   3
-Totales por patente                Cantidad de días0001      Importe   01000,99
+Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
@@ -58,7 +58,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 002
+Fecha:   29/10/2017                                                  Hoja: 002
                           Listado de autos alquilados aprobados
 
 Patente: BAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -69,7 +69,7 @@ Patente: BAA 088           Descripcion: LADESCRIPCIONDELAUTO
        Fecha         Tipo Doc         Nro. Documento       Agencia
 --------------------------------------------------------------------------------
       19/06/1991          D        36170503                   3
-Totales por patente                Cantidad de días0001      Importe   01000,99
+Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
@@ -118,7 +118,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 003
+Fecha:   29/10/2017                                                  Hoja: 003
                           Listado de autos alquilados aprobados
 
 Patente: CAA 088           Descripcion: LADESCRIPCIONDELAUTO
@@ -129,7 +129,7 @@ Patente: CAA 088           Descripcion: LADESCRIPCIONDELAUTO
        Fecha         Tipo Doc         Nro. Documento       Agencia
 --------------------------------------------------------------------------------
       19/06/1991          D        36170503                   3
-Totales por patente                Cantidad de días0001      Importe   01000,99
+Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
@@ -178,7 +178,7 @@ Totales por patente                Cantidad de días0001      Importe   01000,99
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 004
+Fecha:   29/10/2017                                                  Hoja: 004
                           Listado de autos alquilados aprobados
 
 Patente: HRK 903           Descripcion: LADESCRIPCIONDELAUTO
@@ -190,7 +190,7 @@ Patente: HRK 903           Descripcion: LADESCRIPCIONDELAUTO
 --------------------------------------------------------------------------------
       10/06/1991          D        36170503                   1
       29/06/1991          D        36170503                   1
-Totales por patente                Cantidad de días0002      Importe   02011,53
+Totales por patente                Cantidad de dias 0002      Importe   02011,53
 
 
 
@@ -238,7 +238,7 @@ Totales por patente                Cantidad de días0002      Importe   02011,53
 
 
 
-Fecha:   18/10/2017                                                  Hoja: 005
+Fecha:   29/10/2017                                                  Hoja: 005
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
@@ -296,7 +296,7 @@ Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
       15/07/2017          D        12714568                   2
       16/07/2017          D        12714568                   2
       17/07/2017          D        12714568                   2
-Fecha:   18/10/2017                                                  Hoja: 006
+Fecha:   29/10/2017                                                  Hoja: 006
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
@@ -349,7 +349,7 @@ Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
       28/08/2017          D        12714568                   2
       29/08/2017          D        12714568                   2
       30/08/2017          D        12714568                   2
-Totales por patente                Cantidad de días0091      Importe   91090,09
+Totales por patente                Cantidad de dias 0091      Importe   91090,09
 
 
 Totales general                                               Importe 0096104,59
