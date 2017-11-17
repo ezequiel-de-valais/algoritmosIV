@@ -74,7 +74,7 @@
        01 WS-INDICE-MARCA         PIC 9(3).
        01 WS-I                    PIC 9(3).
        01 WS-MAXAUTOS             PIC 9(3)     VALUE 300.
-
+       01 WS-MARCA        PIC X(20).
 
        01 DETALLE.
            03 MARCA            PIC X(20).
@@ -140,7 +140,13 @@
                    ASCENDING KEY IS VEC-MARCA
                    INDEXED BY IND.
                    05  VEC-MARCA       PIC X(20).
-                   05  VEC-PATENTE     PIC X(6).       *> SE USA PARA LUEGO SABER LA MARCA DE UN AUTO POR SU PATENTE
+
+       01 VECAUTOSM.
+           03 VECAUTOS OCCURS 300 TIMES
+                   ASCENDING KEY IS VEC-AUT-PATENTE
+                   INDEXED BY IND2.
+                   05  VEC-AUT-PATENTE     PIC X(6).
+                   05  VEC-AUT-MARCA       PIC X(20).       *> SE USA PARA LUEGO SABER LA MARCA DE UN AUTO POR SU PATENTE
 
        01 VECTOTALMENSUAL.
            03  VECTOTALMENSUAL-ELEM    OCCURS 12 TIMES PIC 9(4).
@@ -178,7 +184,9 @@
            OPEN OUTPUT ESTADISTICAS.
 
        CARGAR-MARCAS.
+
            PERFORM LEER-AUTOS.
+           SET IND2 TO 1.
            MOVE 1 TO WS-INDICE-VECMARCAS.
            PERFORM CARGAR-VECTOR-MARCAS
                UNTIL EOFAUTOS OR WS-INDICE-VECMARCAS > WS-MAXAUTOS.
@@ -191,16 +199,18 @@
            READ ALQUILERESMAE RECORD.
 
        CARGAR-VECTOR-MARCAS.
+
+           MOVE AUT-MARCA TO VEC-AUT-MARCA(IND2).
+           MOVE AUT-PATENTE TO VEC-AUT-PATENTE(IND2).
+           ADD 1 TO IND2.
+
            SET IND TO 1.
            SEARCH VECMARCAS
                AT END
                    MOVE AUT-MARCA TO VEC-MARCA(WS-INDICE-VECMARCAS)
-                   MOVE AUT-PATENTE TO VEC-PATENTE(WS-INDICE-VECMARCAS)
                    ADD 1 TO WS-INDICE-VECMARCAS
                WHEN AUT-MARCA = VEC-MARCA(IND)
-                   *> DISPLAY "MARCA REPETIDA: " MARCA OF VECMARCAS(IND)
            PERFORM LEER-AUTOS.
-
 
        IMP-ENCABEZADO-ESTADISTICAS.
            MOVE FUNCTION CURRENT-DATE TO FECHA-DE-HOY.
@@ -233,10 +243,16 @@
            PERFORM PROCESO UNTIL EOFALQUILERES.
 
        PROCESO.
+           SET IND2 TO 1.
            SET IND TO 1.
            MOVE CORRESPONDING ALQ-FECH TO FECHA-DE-HOY.
+           SEARCH VECAUTOS
+               WHEN ALQ-PATENTE = VEC-AUT-PATENTE(IND2)
+                   MOVE VEC-AUT-MARCA(IND2) TO WS-MARCA
+           END-SEARCH.
+
            SEARCH VECMARCAS
-               WHEN ALQ-PATENTE = VEC-PATENTE(IND)
+               WHEN WS-MARCA = VEC-MARCA(IND)
                    SET WS-INDICE-MARCA TO IND
            END-SEARCH.
 
