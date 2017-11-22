@@ -7,32 +7,32 @@
        file-control.
 
        select alquileresmae
-           assign to disk "Entrada/alquileres.dat"
+           assign to disk "..\Entrada\alquileres.dat"
            organization is indexed
            access mode is sequential
            record key is alq-clave
            file status is fs-alquileresmae.
 
        select choferes
-           assign to disk "Entrada/choferes.dat"
+           assign to disk "..\Entrada\choferes.dat"
            organization is indexed
            access mode is dynamic
            record key is cho-clave
            file status is fs-choferes.
 
        select rechazos
-           assign to disk "Salida/rechazos.txt"
+           assign to disk "..\Salida\rechazos.txt"
            organization is indexed
            record key is rech-clave
            file status is fs-rechazados.
 
        select listado
-           assign to disk "Salida/listado.txt"
+           assign to disk "..\Salida\listado.txt"
            organization is line sequential
            file status is fs-listado.
 
        select temporal
-           assign to disk "Salida/listado-temporal.tmp".
+           assign to disk "..\Salida\listado-temporal.tmp".
 
 
        DATA DIVISION.
