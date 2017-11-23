@@ -21,7 +21,8 @@
            label record is standard.
        01  reg-clientes.
            03  cli-numero      pic x(8).
-           03  filler          pic x(28).
+           03  cli-alta        pic 9(8).
+           03  cli-telef       pic x(20).
            03  cli-direccion   pic x(30).
            03  cli-nro-doc     pic x(20).
 
