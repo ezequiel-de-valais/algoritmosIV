@@ -1,0 +1,63 @@
+Fecha: 26/11/2017                                                  Hoja: 001
+                    Listado de alquileres aprobados
+Fecha: 08/06/2017
+Chofer: CHOFER1   Turno: M
+      Cliente       Tipo Doc   Nro. Documento            Direccion
+--------------------------------------------------------------------------------
+      33213292          D        09321992               SALGUERO 998
+Totales por Chofer:    0332132
+Totales por Fecha:     000332132
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fecha: 26/11/2017                                                  Hoja: 002
+                    Listado de alquileres aprobados
+Total general:            00000332132

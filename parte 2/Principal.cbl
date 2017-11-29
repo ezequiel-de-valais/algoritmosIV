@@ -1,59 +1,61 @@
-       identification division.
+       IDENTIFICATION DIVISION.
        program-id. Principal.
 
        ENVIRONMENT DIVISION.
-       configuration section.
-       input-output section.
-       file-control.
+       CONFIGURATION SECTION.
+       SPECIAL-NAMES.
+           DECIMAL-POINT IS COMMA.
+       INPUT-OUTPUT SECTION.
 
-       select alquileresmae
-           assign to disk "..\Entrada\alquileres.dat"
-           organization is indexed
-           access mode is sequential
-           record key is alq-clave
-           file status is fs-alquileresmae.
+       FILE-CONTROL.
 
-       select choferes
-           assign to disk "..\Entrada\choferes.dat"
-           organization is indexed
-           access mode is dynamic
-           record key is cho-clave
-           file status is fs-choferes.
+       SELECT choferes ASSIGN TO 
+           "entrada/indexados/choferes.dat"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE IS DYNAMIC
+           RECORD KEY IS cho-clave
+           FILE STATUS IS fs-choferes.
 
-       select rechazos
-           assign to disk "..\Salida\rechazos.txt"
-           organization is indexed
-           record key is rech-clave
-           file status is fs-rechazados.
+       SELECT alquileresmae
+           ASSIGN TO "entrada/indexados/alquileres.dat"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE IS SEQUENTIAL
+           RECORD KEY IS alq-clave
+           FILE STATUS IS fs-alquileresmae.
 
-       select listado
-           assign to disk "..\Salida\listado.txt"
+       SELECT rechazos
+           assign to disk "salida/rechazos.txt"
+           ORGANIZATION IS INDEXED
+           RECORD KEY IS rech-clave
+           FILE STATUS IS fs-rechazados.
+
+       SELECT listado
+           assign to disk "salida/listado.txt"
            organization is line sequential
-           file status is fs-listado.
+           FILE STATUS IS fs-listado.
 
-       select temporal
-           assign to disk "..\Salida\listado-temporal.tmp".
+       SELECT temporal
+           assign to disk "salida/listado-temporal.tmp".
 
 
        DATA DIVISION.
        file section.
 
-       fd alquileresmae
+        fd alquileresmae
            label record is standard.
-       01 rec-alquileresmae.
+        01 rec-alquileresmae.
            03 alq-clave.
                05  alq-patente pic x(6).
                05  alq-fecha   pic 9(8).
            03 alq-tipo-doc     pic x.
            03 alq-nro-doc      pic x(20).
            03 alq-importe      pic 9(4)v99.
-           03 alq-chofer       pic x(7).   *> nro de legajo del chofer
+           03 alq-chofer       pic x(7).
            03 alq-estado       pic x.
 
 
-       fd choferes
-           label record is standard.
-       01 rec-choferes.
+        FD choferes.
+        01 rec-choferes.
            03  cho-clave.
                05  cho-nro-legajo  pic x(7).
                05  cho-fecha-desde pic 9(8).
@@ -61,9 +63,9 @@
            03  cho-turno           pic x.
 
 
-       fd rechazos
+        fd rechazos
            label record is standard.
-       01  rec-rechazos.
+        01  rec-rechazos.
            03  rech-clave.
                05  rech-patente    pic x(6).
                05  rech-fecha      pic 9(8).
@@ -72,14 +74,14 @@
            03  rech-importe        pic 9(4)v99.
 
 
-       fd listado
+        fd listado
            label record is standard.
-       01  reg-listado         pic x(80).
+        01  reg-listado         pic x(80).
 
 
-       sd temporal
+        sd temporal
            data record is reg-temporal.
-       01  reg-temporal.
+        01  reg-temporal.
            03 temp-clave.
                05  temp-fecha.
                    07  temp-fecha-dd    pic     99.
