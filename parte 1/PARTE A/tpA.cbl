@@ -563,7 +563,7 @@
            ELSE
                MOVE 'SI' TO FLAG-CLAVE-APROB
                WRITE REG-NUEVOALQUILERES FROM REG-ALQUILERES
-               ADD ALQ-IMPORTE TO TOTPATENTE
+
            END-IF.
            PERFORM LEER-ALQ.
 

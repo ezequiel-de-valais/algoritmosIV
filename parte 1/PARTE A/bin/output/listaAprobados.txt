@@ -1,8 +1,8 @@
-Fecha:   16/11/2017                                                  Hoja: 001
+Fecha:   23/11/2017                                                  Hoja: 001
                           Listado de autos alquilados aprobados
 
 Patente: AAA 088           Descripcion: LADESCRIPCIONDELAUTO
-                           Marca: WOLKSWAGEN
+                           Marca: WOLKSWAGE4
                            Color: ROJO
                            Tamano: G
 
@@ -58,11 +58,11 @@ Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
-Fecha:   16/11/2017                                                  Hoja: 002
+Fecha:   23/11/2017                                                  Hoja: 002
                           Listado de autos alquilados aprobados
 
 Patente: BAA 088           Descripcion: LADESCRIPCIONDELAUTO
-                           Marca: WOLKSWAGEN
+                           Marca: WOLKSWAGE5
                            Color: GRIS
                            Tamano: G
 
@@ -118,11 +118,11 @@ Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
-Fecha:   16/11/2017                                                  Hoja: 003
+Fecha:   23/11/2017                                                  Hoja: 003
                           Listado de autos alquilados aprobados
 
 Patente: CAA 088           Descripcion: LADESCRIPCIONDELAUTO
-                           Marca: WOLKSWAGEN
+                           Marca: WOLKSWAGE1
                            Color: NARANJA
                            Tamano: G
 
@@ -178,11 +178,11 @@ Totales por patente                Cantidad de dias 0001      Importe   01000,99
 
 
 
-Fecha:   16/11/2017                                                  Hoja: 004
+Fecha:   23/11/2017                                                  Hoja: 004
                           Listado de autos alquilados aprobados
 
 Patente: HRK 903           Descripcion: LADESCRIPCIONDELAUTO
-                           Marca: WOLKSWAGEN
+                           Marca: WOLKSWAGE3
                            Color: MAGENTA
                            Tamano: G
 
@@ -190,7 +190,7 @@ Patente: HRK 903           Descripcion: LADESCRIPCIONDELAUTO
 --------------------------------------------------------------------------------
       10/06/1991          D        36170503                   1
       29/06/1991          D        36170503                   1
-Totales por patente                Cantidad de dias 0002      Importe   02011,53
+Totales por patente                Cantidad de dias 0002      Importe   02001,98
 
 
 
@@ -238,7 +238,7 @@ Totales por patente                Cantidad de dias 0002      Importe   02011,53
 
 
 
-Fecha:   16/11/2017                                                  Hoja: 005
+Fecha:   23/11/2017                                                  Hoja: 005
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
@@ -296,7 +296,7 @@ Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
       15/07/2017          D        12714568                   2
       16/07/2017          D        12714568                   2
       17/07/2017          D        12714568                   2
-Fecha:   16/11/2017                                                  Hoja: 006
+Fecha:   23/11/2017                                                  Hoja: 006
                           Listado de autos alquilados aprobados
 
 Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
@@ -352,4 +352,4 @@ Patente: ZRI 180           Descripcion: LADESCRIPCIONDELAUTO
 Totales por patente                Cantidad de dias 0091      Importe   91090,09
 
 
-Totales general                                               Importe 0096104,59
+Totales general                                               Importe 0096095,04
