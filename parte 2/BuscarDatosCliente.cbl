@@ -7,11 +7,7 @@
        file-control.
 
        select clientes
-<<<<<<< HEAD
            assign to disk "../Entrada/indexados/clientes.dat"
-=======
-           assign to disk "Entrada/indexados/clientes.dat"
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
            organization is indexed
            access mode is random
            record key is cli-numero

@@ -1,12 +1,12 @@
-Fecha: 26/11/2017                                                  Hoja: 001
+Fecha: 30/11/2017                                                  Hoja: 001
                     Listado de alquileres aprobados
-Fecha: 08/06/2017
-Chofer: CHOFER1   Turno: M
+Fecha: 03/04/2017
+Chofer: CHOFER3   Turno: T
       Cliente       Tipo Doc   Nro. Documento            Direccion
 --------------------------------------------------------------------------------
-      33213292          D        09321992               SALGUERO 998
-Totales por Chofer:    0332132
-Totales por Fecha:     000332132
+      13324589          D        11432689               LAS HERAS 1814
+Totales por Chofer:    0100000
+Totales por Fecha:     000100000
 
 
 
@@ -58,6 +58,66 @@ Totales por Fecha:     000332132
 
 
 
-Fecha: 26/11/2017                                                  Hoja: 002
+Fecha: 30/11/2017                                                  Hoja: 002
                     Listado de alquileres aprobados
-Total general:            00000332132
+Fecha: 06/06/2017
+Chofer: CHOFER2   Turno: T
+      Cliente       Tipo Doc   Nro. Documento            Direccion
+--------------------------------------------------------------------------------
+      66654412          D        01245112               USPALLATA 778
+Totales por Chofer:    0100000
+Totales por Fecha:     000100000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fecha: 30/11/2017                                                  Hoja: 003
+                    Listado de alquileres aprobados
+Total general:            00000200000

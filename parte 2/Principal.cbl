@@ -9,55 +9,33 @@
 
        FILE-CONTROL.
 
-<<<<<<< HEAD
        SELECT choferes ASSIGN TO
            "../Entrada/indexados/choferes.dat"
-=======
-       SELECT choferes ASSIGN TO 
-           "Entrada/indexados/choferes.dat"
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
            ORGANIZATION IS INDEXED
            ACCESS MODE IS DYNAMIC
            RECORD KEY IS cho-clave
            FILE STATUS IS fs-choferes.
 
        SELECT alquileresmae
-<<<<<<< HEAD
            ASSIGN TO "../Entrada/indexados/alquileres.dat"
-=======
-           ASSIGN TO "Entrada/indexados/alquileres.dat"
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS alq-clave
            FILE STATUS IS fs-alquileresmae.
 
        SELECT rechazos
-<<<<<<< HEAD
            assign to disk "../Salida/rechazos.txt"
-=======
-           assign to disk "Salida/rechazos.txt"
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
            ORGANIZATION IS INDEXED
            RECORD KEY IS rech-clave
            FILE STATUS IS fs-rechazados.
 
        SELECT listado
-<<<<<<< HEAD
            assign to disk "../Salida/listado.txt"
-=======
-           assign to disk "Salida/listado.txt"
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
            organization is line sequential
            FILE STATUS IS fs-listado.
 
        SELECT temporal
-<<<<<<< HEAD
            assign to disk "../Salida/listado-temporal.tmp".
-=======
-           assign to disk "Salida/listado-temporal.tmp".
->>>>>>> 8cdeae0203e9e9a46b7b45f64bcf8b31d68d2cc2
-
 
        DATA DIVISION.
        file section.
