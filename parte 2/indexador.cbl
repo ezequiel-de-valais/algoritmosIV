@@ -36,7 +36,7 @@
        SELECT OUT-CHOFERES-RND
            ASSIGN TO DISK "Entrada/indexados/choferes.dat"
            ORGANIZATION IS INDEXED
-           ACCESS MODE IS DYNAMIC
+           ACCESS MODE IS RANDOM
            RECORD KEY IS CHO-CLAVE OF REG-OUT-CHOFERES-RND
            FILE STATUS IS FS-OUT-CHOFERES.
 
