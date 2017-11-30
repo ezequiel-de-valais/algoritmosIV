@@ -10,32 +10,32 @@
        FILE-CONTROL.
 
        SELECT choferes ASSIGN TO 
-           "entrada/indexados/choferes.dat"
+           "Entrada/indexados/choferes.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS DYNAMIC
            RECORD KEY IS cho-clave
            FILE STATUS IS fs-choferes.
 
        SELECT alquileresmae
-           ASSIGN TO "entrada/indexados/alquileres.dat"
+           ASSIGN TO "Entrada/indexados/alquileres.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS alq-clave
            FILE STATUS IS fs-alquileresmae.
 
        SELECT rechazos
-           assign to disk "salida/rechazos.txt"
+           assign to disk "Salida/rechazos.txt"
            ORGANIZATION IS INDEXED
            RECORD KEY IS rech-clave
            FILE STATUS IS fs-rechazados.
 
        SELECT listado
-           assign to disk "salida/listado.txt"
+           assign to disk "Salida/listado.txt"
            organization is line sequential
            FILE STATUS IS fs-listado.
 
        SELECT temporal
-           assign to disk "salida/listado-temporal.tmp".
+           assign to disk "Salida/listado-temporal.tmp".
 
 
        DATA DIVISION.
@@ -46,7 +46,10 @@
         01 rec-alquileresmae.
            03 alq-clave.
                05  alq-patente pic x(6).
-               05  alq-fecha   pic 9(8).
+               05  alq-fecha.
+                   07  alq-fecha-dd    pic     99.
+                   07  alq-fecha-mm    pic     99.
+                   07  alq-fecha-aaaa  pic     9999.
            03 alq-tipo-doc     pic x.
            03 alq-nro-doc      pic x(20).
            03 alq-importe      pic 9(4)v99.
@@ -58,7 +61,10 @@
         01 rec-choferes.
            03  cho-clave.
                05  cho-nro-legajo  pic x(7).
-               05  cho-fecha-desde pic 9(8).
+               05  cho-fecha-desde.
+                   07  cho-fecha-dd    pic     99.
+                   07  cho-fecha-mm    pic     99.
+                   07  cho-fecha-aaaa  pic     9999.
            03  cho-fecha-hasta     pic 9(8).
            03  cho-turno           pic x.
 
@@ -125,6 +131,17 @@
             03  fecha-actual-aaaa      pic     9999.
             03  fecha-actual-mm        pic     99.
             03  fecha-actual-dd        pic     99.
+
+
+       01 fecha-auxcho.
+            03  fecha-auxcho-aaaa      pic     9999.
+            03  fecha-auxcho-mm        pic     99.
+            03  fecha-auxcho-dd        pic     99.
+
+       01 fecha-auxalq.
+            03  fecha-auxalq-aaaa      pic     9999.
+            03  fecha-auxalq-mm        pic     99.
+            03  fecha-auxalq-dd        pic     99.
 
        01 clave-indice-chofer.
            03 chofer-actual        pic  x(7).
@@ -276,6 +293,9 @@
            if fs-alquileresmae is not equal to 00 and 10
                display "Error al leer alquileres fs:" fs-alquileresmae
            end-if.
+          move alq-fecha-aaaa to fecha-auxalq-aaaa.
+          move alq-fecha-mm to fecha-auxalq-mm.
+          move alq-fecha-dd to fecha-auxalq-dd.
 
        procesar-alquileres.
            if alq-estado = "P"
@@ -291,7 +311,7 @@
            if ok-chof
                perform leer-choferes
                perform procesar-choferes until eof-chof or
-                   cho-fecha-desde > alq-fecha or chof-estado-activo
+                   (fecha-auxcho > fecha-auxalq) or chof-estado-activo
            end-if.
            if chof-estado-inactivo
                 perform rechazar-alquiler
@@ -299,6 +319,9 @@
 
        leer-choferes.
            read choferes next record.
+           move cho-fecha-aaaa to fecha-auxcho-aaaa.
+           move cho-fecha-mm to fecha-auxcho-mm.
+           move cho-fecha-dd to fecha-auxcho-dd.
 
        procesar-choferes.
            if cho-fecha-hasta > alq-fecha

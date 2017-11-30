@@ -1,4 +1,124 @@
-Fecha: 26/11/2017                                                  Hoja: 001
+Fecha: 30/11/2017                                                  Hoja: 001
+                    Listado de alquileres aprobados
+Fecha: 02/03/2017
+Chofer: CHOFER2   Turno: T
+      Cliente       Tipo Doc   Nro. Documento            Direccion
+--------------------------------------------------------------------------------
+      86760403          D        36170503               MALABIA 332
+Totales por Chofer:    0819104
+Totales por Fecha:     000819104
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fecha: 30/11/2017                                                  Hoja: 002
+                    Listado de alquileres aprobados
+Fecha: 06/06/2017
+Chofer: CHOFER2   Turno: T
+      Cliente       Tipo Doc   Nro. Documento            Direccion
+--------------------------------------------------------------------------------
+      66654412          D        01245112               USPALLATA 778
+Totales por Chofer:    0666544
+Totales por Fecha:     000666544
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fecha: 30/11/2017                                                  Hoja: 003
                     Listado de alquileres aprobados
 Fecha: 08/06/2017
 Chofer: CHOFER1   Turno: M
@@ -58,6 +178,6 @@ Totales por Fecha:     000332132
 
 
 
-Fecha: 26/11/2017                                                  Hoja: 002
+Fecha: 30/11/2017                                                  Hoja: 004
                     Listado de alquileres aprobados
-Total general:            00000332132
+Total general:            00001817780

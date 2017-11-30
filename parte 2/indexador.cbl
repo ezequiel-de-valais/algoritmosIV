@@ -7,52 +7,52 @@
        FILE-CONTROL.
 
        SELECT IN-ALQUILERES
-           ASSIGN TO DISK "entrada/alquileres.txt"
+           ASSIGN TO DISK "Entrada/alquileres.txt"
            ORGANIZATION IS LINE SEQUENTIAL
            FILE STATUS IS FS-IN-ALQUILERES.
        SELECT OUT-ALQUILERES-SEQ
-           ASSIGN TO DISK "entrada/indexados/alquileres.dat"
+           ASSIGN TO DISK "Entrada/indexados/alquileres.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS ALQ-CLAVE OF REG-OUT-ALQUILERES-SEQ
            FILE STATUS IS FS-OUT-ALQUILERES.
        SELECT OUT-ALQUILERES-RND
-           ASSIGN TO DISK "entrada/indexados/alquileres.dat"
+           ASSIGN TO DISK "Entrada/indexados/alquileres.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS ALQ-CLAVE OF REG-OUT-ALQUILERES-RND
            FILE STATUS IS FS-OUT-ALQUILERES.
 
        SELECT IN-CHOFERES
-           ASSIGN TO DISK "entrada/choferes.txt"
+           ASSIGN TO DISK "Entrada/choferes.txt"
            ORGANIZATION IS LINE SEQUENTIAL
            FILE STATUS IS FS-IN-CHOFERES.
        SELECT OUT-CHOFERES-SEQ
-           ASSIGN TO DISK "entrada/indexados/choferes.dat"
+           ASSIGN TO DISK "Entrada/indexados/choferes.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS CHO-CLAVE OF REG-OUT-CHOFERES-SEQ
            FILE STATUS IS FS-OUT-CHOFERES.
        SELECT OUT-CHOFERES-RND
-           ASSIGN TO DISK "entrada/indexados/choferes.dat"
+           ASSIGN TO DISK "Entrada/indexados/choferes.dat"
            ORGANIZATION IS INDEXED
-           ACCESS MODE IS DYNAMIC
+           ACCESS MODE IS RANDOM
            RECORD KEY IS CHO-CLAVE OF REG-OUT-CHOFERES-RND
            FILE STATUS IS FS-OUT-CHOFERES.
 
        SELECT IN-CLIENTES
-           ASSIGN TO DISK "entrada/clientes.txt"
+           ASSIGN TO DISK "Entrada/clientes.txt"
            ORGANIZATION IS LINE SEQUENTIAL
            FILE STATUS IS FS-IN-CLIENTES.
        SELECT OUT-CLIENTES-SEQ
-           ASSIGN TO DISK "entrada/indexados/clientes.dat"
+           ASSIGN TO DISK "Entrada/indexados/clientes.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS CLI-NUMERO OF REG-OUT-CLIENTES-SEQ
            ALTERNATE RECORD KEY IS CLI-NRO-DOC OF REG-OUT-CLIENTES-SEQ
            FILE STATUS IS FS-OUT-CLIENTES.
        SELECT OUT-CLIENTES-RND
-           ASSIGN TO DISK "entrada/indexados/clientes.dat"
+           ASSIGN TO DISK "Entrada/indexados/clientes.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS RANDOM
            RECORD KEY IS CLI-NUMERO OF REG-OUT-CLIENTES-RND
