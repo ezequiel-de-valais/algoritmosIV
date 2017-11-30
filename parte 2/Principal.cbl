@@ -9,6 +9,7 @@
 
        FILE-CONTROL.
 
+<<<<<<< HEAD
        SELECT choferes ASSIGN TO
            "../Entrada/indexados/choferes.dat"
 =======
@@ -21,6 +22,7 @@
            FILE STATUS IS fs-choferes.
 
        SELECT alquileresmae
+<<<<<<< HEAD
            ASSIGN TO "../Entrada/indexados/alquileres.dat"
 =======
            ASSIGN TO "Entrada/indexados/alquileres.dat"
@@ -31,6 +33,7 @@
            FILE STATUS IS fs-alquileresmae.
 
        SELECT rechazos
+<<<<<<< HEAD
            assign to disk "../Salida/rechazos.txt"
 =======
            assign to disk "Salida/rechazos.txt"
@@ -40,6 +43,7 @@
            FILE STATUS IS fs-rechazados.
 
        SELECT listado
+<<<<<<< HEAD
            assign to disk "../Salida/listado.txt"
 =======
            assign to disk "Salida/listado.txt"
@@ -48,6 +52,7 @@
            FILE STATUS IS fs-listado.
 
        SELECT temporal
+<<<<<<< HEAD
            assign to disk "../Salida/listado-temporal.tmp".
 =======
            assign to disk "Salida/listado-temporal.tmp".

@@ -7,6 +7,7 @@
        file-control.
 
        select clientes
+<<<<<<< HEAD
            assign to disk "../Entrada/indexados/clientes.dat"
 =======
            assign to disk "Entrada/indexados/clientes.dat"
