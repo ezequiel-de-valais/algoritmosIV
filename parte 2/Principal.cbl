@@ -9,33 +9,33 @@
 
        FILE-CONTROL.
 
-       SELECT choferes ASSIGN TO 
-           "entrada/indexados/choferes.dat"
+       SELECT choferes ASSIGN TO
+           "../Entrada/indexados/choferes.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS DYNAMIC
            RECORD KEY IS cho-clave
            FILE STATUS IS fs-choferes.
 
        SELECT alquileresmae
-           ASSIGN TO "entrada/indexados/alquileres.dat"
+           ASSIGN TO "../Entrada/indexados/alquileres.dat"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS alq-clave
            FILE STATUS IS fs-alquileresmae.
 
        SELECT rechazos
-           assign to disk "salida/rechazos.txt"
+           assign to disk "../Salida/rechazos.txt"
            ORGANIZATION IS INDEXED
            RECORD KEY IS rech-clave
            FILE STATUS IS fs-rechazados.
 
        SELECT listado
-           assign to disk "salida/listado.txt"
+           assign to disk "../Salida/listado.txt"
            organization is line sequential
            FILE STATUS IS fs-listado.
 
        SELECT temporal
-           assign to disk "salida/listado-temporal.tmp".
+           assign to disk "../Salida/listado-temporal.tmp".
 
 
        DATA DIVISION.

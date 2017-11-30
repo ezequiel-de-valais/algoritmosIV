@@ -7,9 +7,9 @@
        file-control.
 
        select clientes
-           assign to disk "entrada/indexados/clientes.dat"
+           assign to disk "../Entrada/indexados/clientes.dat"
            organization is indexed
-           access mode is random 
+           access mode is random
            record key is cli-numero
            alternate record key is cli-nro-doc
            file status is fs-clientes.
